@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.health.WRITE_EXERCISE_ROUTE" />
     
     <application
-        android:label="health_connect_log"
+        android:label="Health Connect Log"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

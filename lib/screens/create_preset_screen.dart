@@ -30,6 +30,7 @@ class _CreatePresetScreenState extends State<CreatePresetScreen> {
       appBar: AppBar(
         centerTitle: false,
         title: const Text('Create Preset'),
+        foregroundColor: Colors.white,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(

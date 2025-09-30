@@ -3,6 +3,15 @@ import '../models/workout_preset.dart';
 import '../services/health_service.dart';
 import '../services/storage_service.dart';
 import 'create_preset_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:yaml/yaml.dart';
+
+Future<String> getVersionFromPubspec() async {
+  final yamlString = await rootBundle.loadString('pubspec.yaml');
+  final doc = loadYaml(yamlString);
+  return doc['version'] ?? 'unknown';
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -100,6 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: false,
         title: const Text('Health Connect Log'),
+        foregroundColor: Colors.white,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -114,9 +124,42 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.health_and_safety),
+            icon: const Icon(Icons.health_and_safety_outlined),
             tooltip: 'Request Health Connect Permissions',
             onPressed: _requestPermissionsManually,
+          ),
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'Information about this app',
+            onPressed: () async {
+              showAboutDialog(
+                context: context,
+                applicationName: 'Health Connect Log',
+                applicationVersion: await getVersionFromPubspec(),
+                applicationLegalese: 'Created by Drarox',
+                children: <Widget>[
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+                    child: GestureDetector(
+                      child: const Text(
+                        'Open source on Github',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      onTap: () async {
+                        final url = Uri.parse('https://github.com/Drarox/Health-Connect-Log');
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),

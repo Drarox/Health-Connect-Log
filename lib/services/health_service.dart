@@ -108,36 +108,114 @@ class HealthService {
 
   HealthWorkoutActivityType _getWorkoutType(String type) {
     switch (type.toLowerCase()) {
+    // Combat & Contact Sports
       case 'martial arts':
         return HealthWorkoutActivityType.MARTIAL_ARTS;
-      case 'running':
-        return HealthWorkoutActivityType.RUNNING;
-      case 'cycling':
-        return HealthWorkoutActivityType.BIKING;
-      case 'swimming':
-        return HealthWorkoutActivityType.SWIMMING;
+      case 'boxing':
+        return HealthWorkoutActivityType.BOXING;
+      case 'rugby':
+        return HealthWorkoutActivityType.RUGBY;
+      case 'handball':
+        return HealthWorkoutActivityType.HANDBALL;
+      case 'basketball':
+        return HealthWorkoutActivityType.BASKETBALL;
+      case 'soccer':
+        return HealthWorkoutActivityType.SOCCER;
+      case 'softball':
+        return HealthWorkoutActivityType.SOFTBALL;
+      case 'baseball':
+        return HealthWorkoutActivityType.BASEBALL;
+      case 'volleyball':
+        return HealthWorkoutActivityType.VOLLEYBALL;
+
+    // Water Sports
+      case 'swimming pool':
+        return HealthWorkoutActivityType.SWIMMING_POOL;
+      case 'swimming open water':
+        return HealthWorkoutActivityType.SWIMMING_OPEN_WATER;
+      case 'scuba diving':
+        return HealthWorkoutActivityType.SCUBA_DIVING;
+      case 'surfing':
+        return HealthWorkoutActivityType.SURFING;
+      case 'sailing':
+        return HealthWorkoutActivityType.SAILING;
+      case 'rowing':
+        return HealthWorkoutActivityType.ROWING;
+      case 'water polo':
+        return HealthWorkoutActivityType.WATER_POLO;
+
+    // Extreme / Gear Interference
+      case 'rock climbing':
+        return HealthWorkoutActivityType.ROCK_CLIMBING;
+      case 'snowboarding':
+        return HealthWorkoutActivityType.SNOWBOARDING;
+      case 'skiing':
+        return HealthWorkoutActivityType.SKIING;
+      case 'snowshoeing':
+        return HealthWorkoutActivityType.SNOWSHOEING;
+      case 'skating':
+        return HealthWorkoutActivityType.SKATING;
+      case 'ice skating':
+        return HealthWorkoutActivityType.ICE_SKATING;
+      case 'paragliding':
+        return HealthWorkoutActivityType.PARAGLIDING;
+      case 'gymnastics':
+        return HealthWorkoutActivityType.GYMNASTICS;
+      case 'fencing':
+        return HealthWorkoutActivityType.FENCING;
+
+    // Other Situations
       case 'yoga':
         return HealthWorkoutActivityType.YOGA;
-      case 'strength training':
-        return HealthWorkoutActivityType.STRENGTH_TRAINING;
-      case 'cardio':
-        return HealthWorkoutActivityType.OTHER;
-      case 'walking':
-        return HealthWorkoutActivityType.WALKING;
+      case 'pilates':
+        return HealthWorkoutActivityType.PILATES;
+      case 'dancing':
+        return HealthWorkoutActivityType.DANCING;
+      case 'guided breathing':
+        return HealthWorkoutActivityType.GUIDED_BREATHING;
+
       default:
         return HealthWorkoutActivityType.OTHER;
     }
   }
 
+
   static List<String> get availableWorkoutTypes => [
+    // Combat & Contact Sports
     'Martial Arts',
-    'Running',
-    'Cycling',
-    'Swimming',
+    'Boxing',
+    'Rugby',
+    'Handball',
+    'Basketball',
+    'Soccer',
+    'Softball',
+    'Baseball',
+    'Volleyball',
+
+    // Water Sports
+    'Swimming Pool',
+    'Swimming Open Water',
+    'Scuba Diving',
+    'Surfing',
+    'Sailing',
+    'Rowing',
+    'Water Polo',
+
+    // Extreme / Gear Interference
+    'Rock Climbing',
+    'Snowboarding',
+    'Skiing',
+    'Snowshoeing',
+    'Skating',
+    'Ice Skating',
+    'Paragliding',
+    'Gymnastics',
+    'Fencing',
+
+    // Other Situations
     'Yoga',
-    'Strength Training',
-    'Cardio',
-    'Walking',
-    'Other',
+    'Pilates',
+    'Dancing',
+    'Guided Breathing',
   ];
 }

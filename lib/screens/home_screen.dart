@@ -291,6 +291,34 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
+                    const SizedBox(width: 8),
+                    if (preset.calories != null)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.secondaryContainer,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.local_fire_department_outlined,
+                              size: 14,
+                              color: Theme.of(context).colorScheme.onSecondaryContainer,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${preset.calories ?? 'N/A'}',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Theme.of(context).colorScheme.onSecondaryContainer,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
                 const SizedBox(height: 12),

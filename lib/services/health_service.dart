@@ -11,9 +11,11 @@ class HealthService {
 
   static const List<HealthDataType> _types = [
     HealthDataType.WORKOUT,
+    HealthDataType.ACTIVE_ENERGY_BURNED,
   ];
 
   static const List<HealthDataAccess> _permissions = [
+    HealthDataAccess.WRITE,
     HealthDataAccess.WRITE,
   ];
 
@@ -83,14 +85,21 @@ class HealthService {
       
       print('Logging workout: ${preset.name} from $startTime to $endTime, type: $workoutType');
       
-      final success = await _health.writeWorkoutData(
+      // Log the workout with calories if provided
+      final workoutSuccess = await _health.writeWorkoutData(
         activityType: workoutType,
         start: startTime,
         end: endTime,
+        totalEnergyBurned: preset.calories,
+        totalEnergyBurnedUnit: HealthDataUnit.KILOCALORIE,
       );
 
-      print('Workout logging result: $success');
-      return success;
+      print('Workout logging result: $workoutSuccess');
+      if (preset.calories != null) {
+        print('Logged workout with ${preset.calories} kcal');
+      }
+
+      return workoutSuccess;
     } catch (e) {
       print('Error logging workout: $e');
       return false;

@@ -6,6 +6,7 @@ class WorkoutPreset {
   final int dayOfWeek; // 1 = Monday, 7 = Sunday
   final int hour;
   final int minute;
+  final int? calories; // Optional calories burned estimate
 
   WorkoutPreset({
     required this.id,
@@ -15,6 +16,7 @@ class WorkoutPreset {
     required this.dayOfWeek,
     required this.hour,
     required this.minute,
+    this.calories,
   });
 
   Map<String, dynamic> toJson() {
@@ -26,6 +28,7 @@ class WorkoutPreset {
       'dayOfWeek': dayOfWeek,
       'hour': hour,
       'minute': minute,
+      'calories': calories,
     };
   }
 
@@ -38,6 +41,7 @@ class WorkoutPreset {
       dayOfWeek: json['dayOfWeek'],
       hour: json['hour'],
       minute: json['minute'],
+      calories: json['calories'],
     );
   }
 

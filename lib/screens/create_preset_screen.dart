@@ -13,6 +13,7 @@ class CreatePresetScreen extends StatefulWidget {
 class _CreatePresetScreenState extends State<CreatePresetScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
+  final _caloriesController = TextEditingController();
   
   String _selectedType = HealthService.availableWorkoutTypes.first;
   int _selectedDay = 1; // Monday
@@ -95,6 +96,26 @@ class _CreatePresetScreenState extends State<CreatePresetScreen> {
                         setState(() {
                           _selectedType = value!;
                         });
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _caloriesController,
+                      decoration: const InputDecoration(
+                        labelText: 'Estimated Calories Burned',
+                        hintText: 'e.g., 300',
+                        border: OutlineInputBorder(),
+                        suffixText: 'kcal',
+                      ),
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value != null && value.trim().isNotEmpty) {
+                          final calories = int.tryParse(value.trim());
+                          if (calories == null || calories <= 0) {
+                            return 'Please enter a valid number of calories';
+                          }
+                        }
+                        return null;
                       },
                     ),
                   ],
@@ -244,6 +265,9 @@ class _CreatePresetScreenState extends State<CreatePresetScreen> {
       return;
     }
 
+    final caloriesText = _caloriesController.text.trim();
+    final calories = caloriesText.isNotEmpty ? int.tryParse(caloriesText) : null;
+
     final preset = WorkoutPreset(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: _nameController.text.trim(),
@@ -252,6 +276,7 @@ class _CreatePresetScreenState extends State<CreatePresetScreen> {
       dayOfWeek: _selectedDay,
       hour: _selectedTime.hour,
       minute: _selectedTime.minute,
+      calories: calories,
     );
 
     await StorageService.savePreset(preset);
@@ -264,6 +289,7 @@ class _CreatePresetScreenState extends State<CreatePresetScreen> {
   @override
   void dispose() {
     _nameController.dispose();
+    _caloriesController.dispose();
     super.dispose();
   }
 }

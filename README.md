@@ -36,7 +36,11 @@ Have you ever been in a situation where you couldn't track your workout because 
 
 *   An Android device with [Health Connect](https://play.google.com/store/apps/details?id=com.google.android.apps.healthdata) installed.
 
-### Manual Installation
+### Download on Google Play Store
+
+[![GooglePlay](docs/images/GooglePlay.png)](https://play.google.com/store/apps/details?id=com.healthconnectlog.health_connect_log)
+
+### Or build it yourself
 Flutter SDK have to be installed on your machine.
 
 1.  **Clone the repository:**

@@ -2,7 +2,8 @@
     <!-- Health Connect permissions -->
 <!--    <uses-permission android:name="android.permission.health.READ_EXERCISE" />-->
     <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
-    
+    <uses-permission android:name="android.permission.health.WRITE_TOTAL_CALORIES_BURNED" />
+
     <!-- Required for Health Connect SDK -->
 <!--    <uses-permission android:name="android.permission.health.READ_EXERCISE_ROUTE" />-->
     <uses-permission android:name="android.permission.health.WRITE_EXERCISE_ROUTE" />
@@ -58,7 +59,7 @@
         <!-- Health Connect data types declaration -->
         <meta-data
             android:name="health_permissions"
-            android:value="android.permission.health.WRITE_EXERCISE" />
+            android:value="android.permission.health.WRITE_EXERCISE,android.permission.health.WRITE_TOTAL_CALORIES_BURNED" />
 <!--            android:value="android.permission.health.READ_EXERCISE,android.permission.health.WRITE_EXERCISE" />-->
     </application>
     <!-- Required to query activities that can process text, see:
